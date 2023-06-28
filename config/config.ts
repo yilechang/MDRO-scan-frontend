@@ -6,10 +6,12 @@ import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
 
-const { REACT_APP_ENV } = process.env;
+const { REACT_APP_ENV, deploy_ENV } = process.env;
 
 export default defineConfig({
   hash: true,
+  base: deploy_ENV === 'gh' ? '/MDRO-scan-frontend/' : '/',
+  publicPath: deploy_ENV === 'gh' ? '/MDRO-scan-frontend/' : '/',
   antd: {},
   dva: {
     hmr: true,
